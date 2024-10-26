@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE = "gauriphatate00/myjavaapp:latest"
-        DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
+        DOCKER_CREDENTIALS_ID = "dockerhub-credentials"
     }
     stages {
         stage('Clone Repository') {
