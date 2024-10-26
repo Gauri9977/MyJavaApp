@@ -1,13 +1,13 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = "your_dockerhub_username/myjavaapp:latest"
+        DOCKER_IMAGE = "gauriphatate00/myjavaapp:latest"
         DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
     }
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/username/MyJavaApp.git', branch: 'main'
+                git url: 'https://github.com/Gauri9977/MyJavaApp.git', branch: 'main'
             }
         }
         stage('Build Docker Image') {
