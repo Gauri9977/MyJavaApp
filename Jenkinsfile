@@ -1,28 +1,25 @@
 pipeline {
     agent any
-    environment {
-        DOCKER_IMAGE = "gauriphatate00/myjavaapp:latest"
-        DOCKER_CREDENTIALS_ID = "dockerhub-credentials"
-    }
+
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/Gauri9977/MyJavaApp.git', branch: 'main'
+                git branch: 'main', url: 'https://github.com/Gauri9977/MyJavaApp.git'
             }
         }
-        stage('Build Docker Image') {
+
+        stage('Build') {
             steps {
                 script {
-                    docker.build(DOCKER_IMAGE)
+                    bat 'App.java'
                 }
             }
         }
-        stage('Push to Docker Hub') {
+
+        stage('Run') {
             steps {
                 script {
-                    docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
-                        docker.image(DOCKER_IMAGE).push()
-                    }
+                    bat'App'
                 }
             }
         }
